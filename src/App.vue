@@ -6,11 +6,17 @@
           </el-col>
       </el-row>
       <el-row :style="autoHeightNavigationAndContent">
+          <!--左侧导航区域-->
           <el-col :span="3" class="left-menu">
+              <div class="index-page">
+                  <span class="index-page-span">首页</span>
+              </div>
               <div class="grid-content bg-purple">
                   <left-resource @openNewMenu="openNewMenu" ref="callLeftResource"/>
               </div>
           </el-col>
+
+          <!--右侧内容区域-->
           <el-col :span="21" class="right-content">
               <div class="grid-content bg-purple-light">
                   <el-scrollbar class="default-scrollbar"
@@ -38,6 +44,8 @@
     export default {
         data() {
             return {
+                //需要重新计算下滚动条的
+                //TODU
                 autoHeightNavigationAndContent:{
                     height:''
                 }
@@ -55,7 +63,7 @@
         methods:{
             getScreenHeightTakeOutTop(){
                 /*设置菜单和内容的高度等于页面高度减去页面头部高度*/
-                this.autoHeightNavigationAndContent.height = window.innerHeight-64 + 'px';
+                this.autoHeightNavigationAndContent.height = window.innerHeight-54 + 'px';
             },
             openNewMenu(){
                 /*父组件调用子组件方法，需要在调用子组件的地方，写上ref，即这里的ref="callRightContentToOpenTab"，
@@ -74,12 +82,8 @@
                 this.$refs.callRightContentToOpenTab.addTab('555',"用户管理");
             },
             toCallUnfoldMenu(unique){
-                alert(unique);
-                alert("展开菜单");
                 //展开对应的菜单
-
-
-
+                this.$refs.callLeftResource.openTabOfMenu(unique);
             }
 
 
@@ -124,6 +128,25 @@
         -ms-flex: 1;
         flex: 1;
     }
+
+    .index-page{
+        height: 39px;
+        border-bottom: 1px solid #333333;
+        line-height: 39px;
+        text-align: left;
+        padding-left: 30px;
+        color:rgb(0, 0, 0);
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .index-page:hover{
+        background-color: rgb(120, 120, 120);
+    }
+    .index-page:focus{
+        background-color: red;
+    }
+
 
 
 

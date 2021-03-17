@@ -1,0 +1,33 @@
+.div-padding-10{
+    padding: 10px;
+}
+
+.div-padding-15{
+    padding: 15px;
+}
+
+.mr-t10{
+    margin-top: 10px;
+}
+
+.point-cursor{
+    cursor: pointer;
+}
+
+.font-xx-large{
+    font-size: xx-large;
+}
+
+.mr-l20{
+    margin-left: 20px;
+    text-align: left;
+
+}
+
+.text-align-left{
+    text-align: left;
+}
+
+.text-align-right{
+    text-align: right;
+}
