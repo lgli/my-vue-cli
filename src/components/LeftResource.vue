@@ -117,7 +117,9 @@
 
     .left-menu{
         height: 100%;
-        min-height: 100px;
+        /*设置了最小高度，当父级div达到比最小高度还低的时候，可能出现滚动条拉不到最下面的菜单
+        用Google浏览器F12键可测试*/
+        /*min-height: 100px;*/
     }
 
 

@@ -7,11 +7,11 @@
       </el-row>
       <el-row :style="autoHeightNavigationAndContent">
           <!--左侧导航区域-->
-          <el-col :span="3" class="left-menu">
-              <div class="index-page">
+          <el-col :span="3" class="left-menu-all">
+              <div class="index-page" @click="openCloseIndexPage($event)">
                   <span class="index-page-span">首页</span>
               </div>
-              <div class="grid-content bg-purple">
+              <div class="grid-content bg-purple" :style="autoMeunHeight">
                   <left-resource @openNewMenu="openNewMenu" ref="callLeftResource"/>
               </div>
           </el-col>
@@ -19,12 +19,7 @@
           <!--右侧内容区域-->
           <el-col :span="21" class="right-content">
               <div class="grid-content bg-purple-light">
-                  <el-scrollbar class="default-scrollbar"
-                                wrap-class="default-scrollbar__wrap"
-                                view-class="default-scrollbar__view">
-                        <RightContent ref="callRightContentToOpenTab"
-                            @toUnfold="toCallUnfoldMenu"/>
-                  </el-scrollbar>
+                  <RightContent ref="callRightContentToOpenTab" @toUnfold="toCallUnfoldMenu"/>
               </div>
           </el-col>
       </el-row>
@@ -44,9 +39,12 @@
     export default {
         data() {
             return {
-                //需要重新计算下滚动条的
-                //TODU
+                /*首页+菜单导航的高度*/
                 autoHeightNavigationAndContent:{
+                    height:''
+                },
+                /*菜单导航的高度*/
+                autoMeunHeight:{
                     height:''
                 }
             }
@@ -64,6 +62,7 @@
             getScreenHeightTakeOutTop(){
                 /*设置菜单和内容的高度等于页面高度减去页面头部高度*/
                 this.autoHeightNavigationAndContent.height = window.innerHeight-54 + 'px';
+                this.autoMeunHeight.height = window.innerHeight-54-45 + 'px';
             },
             openNewMenu(){
                 /*父组件调用子组件方法，需要在调用子组件的地方，写上ref，即这里的ref="callRightContentToOpenTab"，
@@ -84,6 +83,25 @@
             toCallUnfoldMenu(unique){
                 //展开对应的菜单
                 this.$refs.callLeftResource.openTabOfMenu(unique);
+            },
+            /*点击首页*/
+            openCloseIndexPage(obj){
+                let thisDom = obj.target;
+                if(thisDom == null){
+                    return;
+                }
+                let clickDom = "";
+                if(thisDom.tagName.toLocaleLowerCase() === "div"){
+                    //点击的div
+                    clickDom = "div";
+                }else if(thisDom.tagName.toLocaleLowerCase() === "span"){
+                    //点击的span
+                    clickDom = "span";
+                }
+                console.log(thisDom.getAttribute("class"));
+                console.log(clickDom);
+
+
             }
 
 
@@ -110,10 +128,10 @@
         padding-right: 0px !important;
     }
 
-    .left-menu,.right-content,.bg-purple{
+    .left-menu-all,.right-content,.bg-purple{
         height: 100%;
     }
-    .left-menu{
+    .left-menu-all{
         background-color: #969696;
     }
 
