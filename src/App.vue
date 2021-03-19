@@ -8,7 +8,7 @@
       <el-row :style="autoHeightNavigationAndContent">
           <!--左侧导航区域-->
           <el-col :span="3" class="left-menu-all">
-              <div class="index-page" @click="openCloseIndexPage($event)">
+              <div :class="{'index-page':true,'home-page-menu-is-active':homePageIsActive}" @click="openCloseIndexPage($event)">
                   <span class="index-page-span">首页</span>
               </div>
               <div class="grid-content bg-purple" :style="autoMeunHeight">
@@ -46,7 +46,10 @@
                 /*菜单导航的高度*/
                 autoMeunHeight:{
                     height:''
-                }
+                },
+                homePageIsActive:false
+
+
             }
         },
         name: 'App',
@@ -86,20 +89,17 @@
             },
             /*点击首页*/
             openCloseIndexPage(obj){
-                let thisDom = obj.target;
-                if(thisDom == null){
-                    return;
-                }
-                let clickDom = "";
-                if(thisDom.tagName.toLocaleLowerCase() === "div"){
-                    //点击的div
-                    clickDom = "div";
-                }else if(thisDom.tagName.toLocaleLowerCase() === "span"){
-                    //点击的span
-                    clickDom = "span";
-                }
-                console.log(thisDom.getAttribute("class"));
-                console.log(clickDom);
+                //样式切换
+                this.homePageIsActive = !this.homePageIsActive;
+                console.log(obj)
+                //其他所有菜单都不能被选中
+
+                //tab切换到首页tab
+
+
+
+
+
 
 
             }
@@ -117,6 +117,18 @@
       text-align: center;
       color: #2c3e50;
     }
+
+    .home-page-menu-is-active{
+        /*首页菜单被选中时样式*/
+        background-color: #8a9bae;
+        color:rgb(255, 255, 255) !important;
+    }
+
+    .home-page-menu-is-active:hover{
+        background-color: #8a9bae !important;
+    }
+
+
 
     body{
         margin: 0px;
