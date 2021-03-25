@@ -10,7 +10,6 @@
                     :name="item.name"
                     v-bind:closable="index!=0" >
 
-              {{item.content}}+{{index}}
 
 
             </el-tab-pane>
@@ -29,8 +28,7 @@
                 editableTabsValue: 'home_page',
                 editableTabs: [{
                     title: '首页',
-                    name: 'home_page',
-                    content: '首页'
+                    name: 'home_page'
                 }],
             }
         },
