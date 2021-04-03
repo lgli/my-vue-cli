@@ -5,10 +5,14 @@
             <img src="./img/index/logo.png"/>
         </el-col>
         <el-col :span="5" style="color:#69b2fb">
-                1
+            <el-date-picker
+                    v-model="value1"
+                    type="datetime"
+                    placeholder="选择日期时间">
+            </el-date-picker>
         </el-col>
         <el-col :span="6" style="color:#69b2fb">
-                2
+            <el-button type="info" size="small" @click="convertLanguage">切换语言</el-button>
         </el-col>
         <el-col :span="6" style="color:#69b2fb">
                 3
@@ -36,6 +40,22 @@
 
 
 <script>
+
+    export default {
+        data(){
+            return {
+                value1:""
+            }
+        },
+        methods:{
+            convertLanguage(){
+                alert(this.GlobalInfo.userSite)
+
+
+
+            }
+        }
+    }
 
 
 
