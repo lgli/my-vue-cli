@@ -1,4 +1,5 @@
 <script>
+
     const serverSrc='www.baidu.com';
     const token='12345678';
     const hasEnter=false;

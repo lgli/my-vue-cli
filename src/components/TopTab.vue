@@ -15,7 +15,7 @@
             <el-button type="info" size="small" @click="convertLanguage">切换语言</el-button>
         </el-col>
         <el-col :span="6" style="color:#69b2fb">
-                3
+            <p style="color:red;">{{ $t("message.hello") }}</p>
         </el-col>
         <el-col :span="4">
             <!--右侧快速按钮块儿-->
@@ -40,7 +40,6 @@
 
 
 <script>
-
     export default {
         data(){
             return {
@@ -53,6 +52,12 @@
 
 
 
+            }
+        },
+        i18n: {
+            messages: {
+                en: { message: { hello: '111hello component1' } },
+                ja: { message: { hello: 'こんにちは、component1' } }
             }
         }
     }
