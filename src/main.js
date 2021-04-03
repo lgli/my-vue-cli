@@ -32,12 +32,20 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI,{Locale});
 Vue.use(MessageBox);
 Vue.use(VueRouter);
+// Vue.use(GlobalInfo);
 Vue.use(VueI18n);
 // Vue.use(Cf);
 
+const i18n = new VueI18n({
+  locale: 'zh-CN',    // 语言标识
+  //this.$i18n.locale // 通过切换locale的值来实现语言切换
+  messages: {
+    'zh-CN': require('@/lang/zh'),   // 中文语言包
+    'en-US': require('@/lang/en')    // 英文语言包
+  }
+})
+
 
 new Vue({
-  render: h => h(App),
-  //引入vuei18n国际化
-  VueI18n,
+  render: h => h(App),i18n
 }).$mount('#app');

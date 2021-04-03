@@ -15,7 +15,7 @@
             <el-button type="info" size="small" @click="convertLanguage">切换语言</el-button>
         </el-col>
         <el-col :span="6" style="color:#69b2fb">
-            <p style="color:red;">{{ $t("message.hello") }}</p>
+            <p style="color:red;">{{ $t("m.music") }}</p>
         </el-col>
         <el-col :span="4">
             <!--右侧快速按钮块儿-->
@@ -43,21 +43,19 @@
     export default {
         data(){
             return {
-                value1:""
+                value1:"",
+                localeLanguage:this.GlobalInfo.localeLanguage
             }
         },
         methods:{
             convertLanguage(){
-                alert(this.GlobalInfo.userSite)
-
-
-
-            }
-        },
-        i18n: {
-            messages: {
-                en: { message: { hello: '111hello component1' } },
-                ja: { message: { hello: 'こんにちは、component1' } }
+                //切换语言
+                if(this.$i18n.locale === "en"){
+                    this.$i18n.locale = "zh-CN"
+                }else if(this.$i18n.locale === "zh-CN"){
+                    this.$i18n.locale = "en"
+                }
+                //切换elementui插件的国际化
             }
         }
     }
