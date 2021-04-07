@@ -49,13 +49,15 @@
         },
         methods:{
             convertLanguage(){
+                console.log(this.$i18n.locale);
                 //切换语言
-                if(this.$i18n.locale === "en"){
-                    this.$i18n.locale = "zh-CN"
-                }else if(this.$i18n.locale === "zh-CN"){
+                if(this.$i18n.locale === "zh"){
                     this.$i18n.locale = "en"
+                }else if(this.$i18n.locale === "en"){
+                    this.$i18n.locale = "zh"
                 }
                 //切换elementui插件的国际化
+                console.log(this.$i18n.locale)
             }
         }
     }
