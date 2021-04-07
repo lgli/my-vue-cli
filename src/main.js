@@ -1,16 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
-/*引入elementUI*/
-import ElementUI from 'element-ui'
 /*引入elementUI主题*/
 import 'element-ui/lib/theme-chalk/index.css'
 /*引入elementUI国际化*/
 import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+import locale from 'element-ui/lib/locale';
 //引入vue-i18国际化
 import VueI18n from 'vue-i18n'
-
-
 
 /*引入element弹框消息*/
 import MessageBox  from 'element-ui'
@@ -31,27 +28,21 @@ Vue.prototype.GlobalInfo = GlobalInfo;
 
 
 Vue.config.productionTip = false;
-
-// Vue.use(ElementUI);
 Vue.use(MessageBox);
 Vue.use(VueRouter);
-// Vue.use(GlobalInfo);
 Vue.use(VueI18n);
 // Vue.use(Cf);
-//
+
+
+
 const i18n = new VueI18n({
   locale: 'zh',    // 语言标识
-  //this.$i18n.locale // 通过切换locale的值来实现语言切换
   messages: {
     zh: Object.assign(require("./lang/zh"), zhLocale),
     en: Object.assign(require("./lang/en"), enLocale)
   }
 });
-
-
-Vue.use(ElementUI, {
-  i18n: (key, value) => i18n.t(key, value)
-});
+locale.i18n((key, value) => i18n.t(key, value));
 
 new Vue({
   render: h => h(App),

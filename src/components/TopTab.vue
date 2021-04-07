@@ -50,7 +50,7 @@
         methods:{
             convertLanguage(){
                 console.log(this.$i18n.locale);
-                //切换语言
+                // 切换语言
                 if(this.$i18n.locale === "zh"){
                     this.$i18n.locale = "en"
                 }else if(this.$i18n.locale === "en"){
