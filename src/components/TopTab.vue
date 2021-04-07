@@ -8,14 +8,14 @@
             <el-date-picker
                     v-model="value1"
                     type="datetime"
-                    placeholder="选择日期时间">
+                    v-bind:placeholder="$t('l.optTime')">
             </el-date-picker>
         </el-col>
         <el-col :span="6" style="color:#69b2fb">
             <el-button type="info" size="small" @click="convertLanguage">切换语言</el-button>
         </el-col>
         <el-col :span="6" style="color:#69b2fb">
-            <p style="color:red;">{{ $t("m.music") }}</p>
+            <p style="color:red;">{{ $t("l.music") }}</p>
         </el-col>
         <el-col :span="4">
             <!--右侧快速按钮块儿-->
