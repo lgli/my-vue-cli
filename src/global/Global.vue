@@ -1,6 +1,6 @@
 <script>
 
-    const serverSrc='www.baidu.com';
+    const serverSrc='www.baidu1111.com';
     const token='12345678';
     const hasEnter=false;
     const userSite="中国钓鱼岛";
